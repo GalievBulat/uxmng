@@ -1,0 +1,48 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the p.lugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.bgaliev.occult_color_scheme</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Occult_color_scheme</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="galievbulat2001@gmail.com" >Email</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    Occult_color_scheme. <br>
+    <em>dk dddddddddddddddddddd</em>
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
+    <!--<depends>com.intellij.java</depends>-->
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+
+    <!--<actions>
+        <action id="CheckPallete " class="com.bgaliev.occult_color_scheme.framework.ColorHarmony2" text="Check Palette Harmony"
+                description="Check Pallete harmony">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+        </action>
+    </actions>-->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Occult Palette" secondary="true" icon="AllIcons.General.Modified" anchor="right"
+                    factoryClass="PaletteToolWindowFactory"/>
+    </extensions>
+    <actions>
+        <action id="com.bgaliev.occult_color_scheme.framework.ColorHarmony2"
+                class="com.bgaliev.occult_color_scheme.framework.ColorHarmony2" text="Palette" description="Palette">
+            <add-to-group group-id="MainMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>

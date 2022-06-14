@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.StartScreen">
+  <grid id="27dc6" binding="myToolWindowContent" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="44be3" class="javax.swing.JLabel" binding="timeZone">
+        <constraints/>
+        <properties>
+          <text value="No Palette yet"/>
+        </properties>
+      </component>
+      <hspacer id="8bf9c">
+        <constraints/>
+      </hspacer>
+      <hspacer id="26841">
+        <constraints/>
+      </hspacer>
+      <component id="5fceb" class="javax.swing.JButton" binding="nextPageButton">
+        <constraints/>
+        <properties>
+          <text value="Create Palette"/>
+        </properties>
+      </component>
+      <component id="611bd" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+        <constraints/>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>
