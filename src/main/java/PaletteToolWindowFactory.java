@@ -3,15 +3,10 @@
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
-import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
-import javafx.scene.Scene;
 import org.jetbrains.annotations.NotNull;
-import view.GeneratedPalette;
 import view.StartScreen;
-import view.ViewNavigator;
-
-import javax.swing.plaf.PanelUI;
+import com.bgaliev.occult_color_scheme.presenter.ToolbarPresenter;
 
 public class PaletteToolWindowFactory implements ToolWindowFactory {
 
@@ -24,7 +19,7 @@ public class PaletteToolWindowFactory implements ToolWindowFactory {
   public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
 
     ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
-    ViewNavigator navigator = new ViewNavigator(toolWindow, contentFactory, project);
+    ToolbarPresenter navigator = new ToolbarPresenter(toolWindow, contentFactory, project);
     StartScreen startScreen = new StartScreen(navigator);
     navigator.navigateToScreen(startScreen.getContent());
   }

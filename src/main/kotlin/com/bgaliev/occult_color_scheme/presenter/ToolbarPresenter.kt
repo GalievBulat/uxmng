@@ -1,4 +1,4 @@
-package view
+package com.bgaliev.occult_color_scheme.presenter
 
 import com.android.tools.idea.configurations.ConfigurationManager
 import com.android.tools.idea.ui.resourcemanager.plugin.LayoutRenderer
@@ -20,7 +20,7 @@ import java.awt.image.BufferedImage
 import java.util.concurrent.CompletableFuture
 import javax.swing.JPanel
 
-class ViewNavigator(val toolWindow: ToolWindow, private val contentFactory: ContentFactory,val project: Project) {
+class ToolbarPresenter(val toolWindow: ToolWindow, private val contentFactory: ContentFactory, val project: Project) {
     private var curImage: BufferedImage? = null
     private val imageProcessing = ImageProcessing()
     private val colorNormalizer = ColorNormalizer()
@@ -70,7 +70,7 @@ class ViewNavigator(val toolWindow: ToolWindow, private val contentFactory: Cont
     fun colorDiff(rgba1: ImageProcessing.RGBA, rgba2: ImageProcessing.RGBA): Double {
         return colorNormalizer.compare(rgba1, rgba2)
     }
-    fun comparePalettes(maxColDiff: Double,maxAreaDiff: Double, imagePalette1: ImagePalette, imagePalette2: ImagePalette): Boolean{
+    fun comparePalettes(maxColDiff: Double, maxAreaDiff: Double, imagePalette1: ImagePalette, imagePalette2: ImagePalette): Boolean{
         for (i in imagePalette1.colors.indices) {
             val minDiff = imagePalette2.colors.minByOrNull {
                 colorDiff(it, imagePalette1.colors[i])

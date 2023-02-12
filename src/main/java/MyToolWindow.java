@@ -1,7 +1,6 @@
 // Copyright 2000-2022 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
-import com.intellij.openapi.wm.ToolWindow;
-import view.ViewNavigator;
+import com.bgaliev.occult_color_scheme.presenter.ToolbarPresenter;
 
 import javax.swing.*;
 import java.util.Calendar;
@@ -15,7 +14,7 @@ public class MyToolWindow {
   private JLabel timeZone;
   private JPanel myToolWindowContent;
 
-  public MyToolWindow(ViewNavigator navigator) {
+  public MyToolWindow(ToolbarPresenter navigator) {
     hideToolWindowButton.addActionListener(e -> navigator.getToolWindow().hide(null));
     refreshToolWindowButton.addActionListener(e -> currentDateTime());
 

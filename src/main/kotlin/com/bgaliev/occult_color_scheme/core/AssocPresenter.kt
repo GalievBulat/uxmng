@@ -1,9 +1,9 @@
 package com.bgaliev.occult_color_scheme.core
 
-import view.ViewNavigator
+import com.bgaliev.occult_color_scheme.presenter.ToolbarPresenter
 
 class AssocPresenter(private val colorNormalizer: ColorNormalizer) {
-    fun getAssoc(palette: ViewNavigator.ImagePalette): String{
+    fun getAssoc(palette: ToolbarPresenter.ImagePalette): String{
         var sinc = 0.0
         var exc  = 0.0
         var comp = 0.0

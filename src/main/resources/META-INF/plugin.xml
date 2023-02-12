@@ -40,8 +40,8 @@
                     factoryClass="PaletteToolWindowFactory"/>
     </extensions>
     <actions>
-        <action id="com.bgaliev.occult_color_scheme.framework.ColorHarmony2"
-                class="com.bgaliev.occult_color_scheme.framework.ColorHarmony2" text="Palette" description="Palette">
+        <action id="com.bgaliev.occult_color_scheme.framework.ColorHarmonizeAction"
+                class="com.bgaliev.occult_color_scheme.framework.ColorHarmonizeAction" text="Palette" description="Palette">
             <add-to-group group-id="MainMenu" anchor="first"/>
         </action>
     </actions>

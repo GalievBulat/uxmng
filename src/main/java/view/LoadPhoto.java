@@ -1,6 +1,7 @@
 package view;// Copyright 2000-2022 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
 import com.bgaliev.occult_color_scheme.core.ImageProcessing;
+import com.bgaliev.occult_color_scheme.presenter.ToolbarPresenter;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.project.Project;
@@ -9,10 +10,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import org.intellij.images.fileTypes.impl.ImageFileType;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 public class LoadPhoto {
 
@@ -24,9 +21,9 @@ public class LoadPhoto {
   private JComboBox<String> imageQualityBox;
   private JComboBox<String> colorsAreasTypeBox;
 
-  private ViewNavigator navigator;
+  private ToolbarPresenter navigator;
 
-  public LoadPhoto(ViewNavigator navigator) {
+  public LoadPhoto(ToolbarPresenter navigator) {
     this.navigator = navigator;
 
     colorSpacingBox.addItem("Complementary");
@@ -41,9 +38,9 @@ public class LoadPhoto {
 
     colorSpacingBox.addItemListener(e -> navigator.setHueSpacing(ImageProcessing.HUE_CONTROL.values()[colorSpacingBox.getSelectedIndex()]));
     imageQualityBox.addItemListener(e ->
-            navigator.setQuality(ViewNavigator.Quality.values()[imageQualityBox.getSelectedIndex()]));
+            navigator.setQuality(ToolbarPresenter.Quality.values()[imageQualityBox.getSelectedIndex()]));
     colorsAreasTypeBox.addItemListener(e ->
-            navigator.setAreaType(ViewNavigator.AreaType.values()[colorsAreasTypeBox.getSelectedIndex()]));
+            navigator.setAreaType(ToolbarPresenter.AreaType.values()[colorsAreasTypeBox.getSelectedIndex()]));
     generateButton.addActionListener(e -> navigator.navigateToScreen(new GeneratedPalette(navigator).getContent()));
     loadPictureButton.addActionListener(e -> loadPhoto(navigator.getProject()));
   }

@@ -1,11 +1,10 @@
 package view;// Copyright 2000-2022 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
 import com.bgaliev.occult_color_scheme.core.ImageProcessing;
+import com.bgaliev.occult_color_scheme.presenter.ToolbarPresenter;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -16,7 +15,7 @@ public class LayoutDetails {
   private JPanel myToolWindowContent;
   private JButton backButton;
   private JPanel colorPalettes;
-  private ViewNavigator navigator;
+  private ToolbarPresenter navigator;
   public JLabel getColor(double val, ImageProcessing.RGBA rgb){
     JLabel testLabel = new JLabel(String.format("%,.2f", val*100) + "%");
     //testLabel.setBorder(JBUI.Borders.empty(5));
@@ -29,7 +28,7 @@ public class LayoutDetails {
     return testLabel;
   }
 
-  private void showPalette(ViewNavigator.ImagePalette palette, GridBagConstraints constraints){
+  private void showPalette(ToolbarPresenter.ImagePalette palette, GridBagConstraints constraints){
 
     JPanel j = new JPanel();
     //j.setPreferredSize(new Dimension(300,25));
@@ -49,12 +48,12 @@ public class LayoutDetails {
 
   }
 
-  public LayoutDetails(ViewNavigator navigator, BufferedImage image) {
+  public LayoutDetails(ToolbarPresenter navigator, BufferedImage image) {
     this.navigator = navigator;
     backButton.addActionListener((e)-> {
       navigator.navigateToScreen(new LayoutListValidation(navigator).getContent());
     });
-    ViewNavigator.ImagePalette palette = navigator.getPaletteByImage(image, 10);
+    ToolbarPresenter.ImagePalette palette = navigator.getPaletteByImage(image, 10);
     ApplicationManager.getApplication().invokeLater(()->{
       colorPalettes.add(loadingPanel());
       this.navigator = navigator;

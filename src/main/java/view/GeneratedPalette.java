@@ -1,6 +1,7 @@
 package view;// Copyright 2000-2022 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
 import com.bgaliev.occult_color_scheme.core.ImageProcessing;
+import com.bgaliev.occult_color_scheme.presenter.ToolbarPresenter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.util.ui.JBUI;
 
@@ -17,9 +18,9 @@ public class GeneratedPalette {
   private JButton activeColorButton;
   private JPanel colorPalettes;
   private JButton backButton;
-  private final ViewNavigator navigator;
+  private final ToolbarPresenter navigator;
 
-  public GeneratedPalette(ViewNavigator navigator) {
+  public GeneratedPalette(ToolbarPresenter navigator) {
     backButton.addActionListener(e-> {
       navigator.navigateToScreen(new LoadVariants(navigator).getContent());
             });
@@ -46,10 +47,10 @@ public class GeneratedPalette {
       colorPalettes.updateUI();
     });
   }
-  private void generatePalettes(List<ViewNavigator.ImagePalette> palettes){
+  private void generatePalettes(List<ToolbarPresenter.ImagePalette> palettes){
 
     GridBagConstraints cn =new GridBagConstraints();
-    for (ViewNavigator.ImagePalette palette : palettes) {
+    for (ToolbarPresenter.ImagePalette palette : palettes) {
       JPanel j = new JPanel();
       //j.setPreferredSize(new Dimension(300,25));
       GridBagConstraints c =new GridBagConstraints();
@@ -97,7 +98,7 @@ public class GeneratedPalette {
 
     }
   }
-  public JLabel getColor(double val, ImageProcessing.RGBA rgb, ViewNavigator.ImagePalette palette){
+  public JLabel getColor(double val, ImageProcessing.RGBA rgb, ToolbarPresenter.ImagePalette palette){
     JLabel testLabel = new JLabel(String.format("%,.2f", val*100) + "%");
 
     testLabel.setBorder(JBUI.Borders.empty(5));

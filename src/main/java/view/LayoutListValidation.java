@@ -1,5 +1,6 @@
 package view;// Copyright 2000-2022 JetBrains s.r.o. and other contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 
+import com.bgaliev.occult_color_scheme.presenter.ToolbarPresenter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ui.components.JBScrollPane;
 
@@ -19,11 +20,14 @@ public class LayoutListValidation {
   private JPanel colorPalettes;
   private JButton changePaletteButton;
   private JButton refreshLayoutsButton;
-  private ViewNavigator navigator;
+  private ToolbarPresenter navigator;
 
 
-  public LayoutListValidation(ViewNavigator navigator) {
+  public LayoutListValidation(ToolbarPresenter navigator) {
     this.navigator = navigator;
+    refreshLayoutsButton.addActionListener((e)-> {
+      navigator.navigateToScreen(new LayoutListValidation(navigator).getContent());
+    });
     changePaletteButton.addActionListener((e)-> {
       navigator.navigateToScreen(new LoadVariants(navigator).getContent());
     });
@@ -56,7 +60,7 @@ public class LayoutListValidation {
       //j.add(getLayout(render), c);
       JLabel imageView = getImage(render);
       panel.add(imageView, c);
-      ViewNavigator.ImagePalette palette = navigator.getPaletteByImage(render.get(), navigator.getCurPalette().getAreas().size());
+      ToolbarPresenter.ImagePalette palette = navigator.getPaletteByImage(render.get(), navigator.getCurPalette().getAreas().size());
       boolean palCheck  = navigator.comparePalettes(3, 0.1, palette, navigator.getCurPalette());
 
       panel.add(new JLabel(palCheck ? "fits palette" : "doesn't fit palette"), c);

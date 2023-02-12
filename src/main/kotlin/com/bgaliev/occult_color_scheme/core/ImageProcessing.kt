@@ -146,6 +146,16 @@ class ImageProcessing {
                 RGBA(lab.toRGB(labColor.toFloatArray().also { it[0] = changedBrt.toFloat()*100 }))
             }
             Strategy.MIXED -> {
+                val changedVal = (1 - area)
+                val labColor = lab.fromRGB(color)
+                val prop = Random.nextDouble(0.3, 0.7)
+                val newLab = sqrt(changedVal)*prop
+                val newHsv = sqrt(changedVal)*(1-prop)
+                val labAppl = RGBA(lab.toRGB(labColor.toFloatArray().also { it[0] = newLab.toFloat()*100 }))
+                val hsvColor = hsv.fromRGB(labAppl.toFloatArray())
+                RGBA(hsv.toRGB(hsvColor.also { it[1] = newHsv.toFloat() }))
+            }
+            /*Strategy.MIXED -> {
                 val changedVal = (1 - area).pow(1.3)
                 val labColor = lab.fromRGB(color)
                 val prop = Random.nextDouble(0.95, 1.0)
@@ -159,7 +169,7 @@ class ImageProcessing {
                 }))
                 val hsvColor = hsv.fromRGB(labAppl.toFloatArray())
                 return RGBA(hsv.toRGB(hsvColor.also { it[1] = newHsv.toFloat() }))
-            }
+            }*/
         }
     }
 
