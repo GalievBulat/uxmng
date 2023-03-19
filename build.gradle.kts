@@ -9,6 +9,11 @@ plugins {
     id ("org.beryx.jlink") version "2.24.1"
 }
 
+repositories {
+    mavenCentral()
+}
+
+
 java {
     sourceCompatibility = JavaVersion.VERSION_11
 }
@@ -26,7 +31,7 @@ repositories {
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-    localPath.set("C:\\Android\\Android Studio")
+    localPath.set("C:\\Program Files\\Android\\Android Studio")
     //version.set("2021.1.2")
     type.set("IC") // Target IDE Platform
     plugins.set(listOf("android", /*"com.intellij.java"*/))
@@ -60,13 +65,31 @@ tasks {
     }
 }
 dependencies {
+    implementation("org.tensorflow:tensorflow-core-platform:0.5.0")
+
+    implementation(platform("io.projectreactor:reactor-bom:2020.0.20"))
+    implementation("io.rsocket:rsocket-core:1.1.2")
+    implementation("io.rsocket:rsocket-transport-netty:1.1.2")
+    implementation("io.rsocket.broker:rsocket-broker-frames:0.3.0")
+
+
+    implementation ("org.jooq:joor-java-8:0.9.7")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation ("com.google.code.gson:gson:2.8.6")
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.3.2")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2")
+
+
+    testImplementation ("junit:junit:4.12")
     implementation(kotlin("stdlib-jdk8"))
 }
 val compileKotlin: KotlinCompile by tasks
+
 compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "11"
 }
 val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+    jvmTarget = "11"
 }

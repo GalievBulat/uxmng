@@ -17,6 +17,7 @@ public class LayoutDetails {
   private JPanel colorPalettes;
   private ToolbarPresenter navigator;
   public JLabel getColor(double val, ImageProcessing.RGBA rgb){
+
     JLabel testLabel = new JLabel(String.format("%,.2f", val*100) + "%");
     //testLabel.setBorder(JBUI.Borders.empty(5));
     testLabel.setFont(new Font(testLabel.getFont().getName(), Font.PLAIN, 10));

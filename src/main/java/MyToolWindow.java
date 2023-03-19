@@ -3,6 +3,7 @@
 import com.bgaliev.occult_color_scheme.presenter.ToolbarPresenter;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.util.Calendar;
 
 public class MyToolWindow {
@@ -17,7 +18,7 @@ public class MyToolWindow {
   public MyToolWindow(ToolbarPresenter navigator) {
     hideToolWindowButton.addActionListener(e -> navigator.getToolWindow().hide(null));
     refreshToolWindowButton.addActionListener(e -> currentDateTime());
-
+    //new com.android.tools.layoutinspector.SkiaViewNode(1,new BufferedImage(null));
     this.currentDateTime();
   }
 

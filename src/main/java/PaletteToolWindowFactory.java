@@ -20,6 +20,7 @@ public class PaletteToolWindowFactory implements ToolWindowFactory {
 
     ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
     ToolbarPresenter navigator = new ToolbarPresenter(toolWindow, contentFactory, project);
+
     StartScreen startScreen = new StartScreen(navigator);
     navigator.navigateToScreen(startScreen.getContent());
   }

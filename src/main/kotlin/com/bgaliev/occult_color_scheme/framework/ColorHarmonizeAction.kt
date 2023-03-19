@@ -15,8 +15,6 @@ import org.jetbrains.kotlin.idea.util.projectStructure.allModules
 
 
 class ColorHarmonizeAction : AnAction() {
-
-
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.getData(PlatformDataKeys.PROJECT)!!
         val layoutDir = FilenameIndex.getVirtualFilesByName( "drawable", GlobalSearchScope.projectScope(project)).first()

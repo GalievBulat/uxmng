@@ -11,9 +11,9 @@ class MainScreen {
 init {
 
         frame.setBounds(100, 100, 730, 489);
-        frame.setLayout(BorderLayout())
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
+    frame.layout = BorderLayout()
+    frame.defaultCloseOperation = JFrame.EXIT_ON_CLOSE;
+    frame.contentPane.layout = null;
 
         val testLabel = JLabel("")
     testLabel.setBounds(65, 68, 46, 14)

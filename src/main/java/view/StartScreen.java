@@ -11,6 +11,7 @@ public class StartScreen {
   private JPanel myToolWindowContent;
 
   public StartScreen(ToolbarPresenter navigator) {
+    //androidx.compose.ui.tooling.preview.Preview
     nextPageButton.addActionListener(e -> navigator.navigateToScreen(new LoadVariants(navigator).getContent()));
 
   }
